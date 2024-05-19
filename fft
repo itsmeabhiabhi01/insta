@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Rooms</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1c1c1c;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #2b2b2b;
+        }
+        .header button, .header a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .header a {
+            background-color: #ffc107;
+            color: black;
+        }
+        .header button:hover, .header a:hover {
+            background-color: #0056b3;
+        }
+        .header a:hover {
+            background-color: #e0a800;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            background-color: #2e2e2e;
+            color: white;
+        }
+        .language-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .language-item {
+            background-color: #383838;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .language-item:hover {
+            background-color: #505050;
+        }
+        .rooms-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .room-card {
+            background-color: #383838;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .room-card img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .room-card h3 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #ffffff;
+        }
+        .join-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .join-button:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .footer:hover {
+            background-color: #0056b3;
+        }
+        .message-box {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: #2b2b2b;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            display: none;
+            max-width: 300px;
+        }
+        .message-box textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #383838;
+            color: white;
+            resize: none;
+            height: 100px;
+        }
+        .message-box button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .message-box button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header container">
+        <button>Create a new group</button>
+        <a href="#">Buy me a coffee</a>
+    </div>
+    <div class="container">
+        <input type="text" class="search-bar" placeholder="Search for Language, Level, Topic, Username, Mic On, Mic Off, Mic Allow, Full, Empty, Crowded, Unlimited...">
+        
+        <div class="language-list">
+            <div class="language-item">English</div>
+            <div class="language-item">Vietnamese</div>
+            <div class="language-item">Indonesian</div>
+            <div class="language-item">Hindi</div>
+            <div class="language-item">Arabic</div>
+            <div class="language-item">Bengali</div>
+            <div class="language-item">Telugu</div>
+            <div class="language-item">French</div>
+            <div class="language-item">Urdu</div>
+            <div class="language-item">Chinese</div>
+            <div class="language-item">Uzbek</div>
+            <div class="language-item">Malayalam</div>
+            <div class="language-item">Tamil</div>
+            <div class="language-item">Spanish</div>
+        </div>
+
+        <!-- Audio Rooms -->
+        <div class="rooms-container">
+            <div class="room-card">
+                <img src="https://via.placeholder.com/60" alt="Profile">
+                <h3>English Room</h3>
+                <p>Any Level</p>
+                <a href="#" class="join-button">Join and talk now!</a>
+            </div>
+            <div class="room-card">
+                <img src="https://via.placeholder.com/60" alt="Profile">
+                <h3>Vietnamese Room</h3>
+                <p>Any Level</p>
+                <a href="#" class="join-button">Join and talk now!</a>
+            </div>
+            <div class="room-card">
+                <img src="https://via.placeholder.com/60" alt="Profile">
+                <h3>Indonesian Room</h3>
+                <p>Any Level</p>
+                <a href="#" class="join-button">Join and talk now!</a>
+            </div>
+            <div class="room-card">
+                <img src="https://via.placeholder.com/60" alt="Profile">
+                <h3>Hindi Room</h3>
+                <p>Any Level</p>
+                <a href="#" class="join-button">Join and talk now!</a>
+            </div>
+            <div class="room-card">
+                <img src="https://via.placeholder.com/60" alt="Profile">
+                <h3>Arabic Room</h3>
+                <p>Any Level</p>
+                <a href="#" class="join-button">Join and talk now!</a>
+            </div>
+            <div class="room-card">
+                <img src="https://via.placeholder.com/60" alt="Profile">
+                <h3>Bengali Room</h3>
+                <p>Any Level</p>
+                <a href="#" class="join-button">Join and talk now!</a>
+            </div>
+            <div class="room-card">
+                <img src="https://via.placeholder.com/60" alt="Profile">
+                <h3>Telugu Room</h3>
+                <p>Any Level</p>
+                <a href="#" class="join-button">Join and talk now!</a>
+            </div>
+            <div class="room-card">
+                <img src="https://via.placeholder.com/60" alt="Profile">
+                <h3>French Room</h3>
+                <p>Any Level</p>
+                <a href="#" class="join-button">Join and talk now!</a>
+            </div>
+            <div class="room-card">
+                <img src="https://via.placeholder.com/60" alt="Profile">
+                <h3>Urdu Room</h3>
+                <p>Any Level</p>
+                <a href="#" class="join-button">Join and talk now!</a>
+            </div>
+            <div class="room-card">
+                <img src="https://via.placeholder.com/60" alt="Profile">
+                <h3>Malayalam Room</h3>
+                <p>Any Level</p>
+                <a href="#" class="join-button">Join and talk now!</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="plusButton">+</div>
+    <div class="message-box" id="messageBox">
+        <h3>Send a Message</h3>
+        <textarea placeholder="Type your message here..."></textarea>
+        <button>Send</button>
+    </div>
+
+    <script>
+        const plusButton = document.getElementById('plusButton');
+        const messageBox = document.getElementById('messageBox');
+
+        plusButton.addEventListener('click', () => {
+            if (messageBox.style.display === 'none' || messageBox.style.display === '') {
+                messageBox.style.display = 'block';
+            } else {
+                messageBox.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
